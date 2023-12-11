@@ -1,95 +1,99 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import { LockOutlined } from '@mui/icons-material';
+//1. Import area 
+import { Avatar, Box, Button, Checkbox, Container, FormControlLabel, Grid, Link, TextField, ThemeProvider, Typography, createTheme } from '@mui/material'
 
-export default function Home() {
+let x = createTheme()
+//2. Function Defination area 
+function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+   <ThemeProvider theme={x}>
+    <Container component="main" maxWidth="xs">
+        <Box sx= {{
+          marginTop: 8,
+          display:"flex",
+          flexDirection:"column",
+          alignItems: "center"
+        }}>
+          <Avatar sx={{bgcolor:'#9C27B0', m: 1}}>
+            <LockOutlined />
+          </Avatar>
+          <Typography component= "h1" variant= "h5" sx={{color:'black'}} fontWeight="bold">Sign Up</Typography>
+          <Box component="form" sx={{mt:1}}>
+            <Grid container>
+              <Grid item xs
+               sx={{mr:1}}>
+                <TextField
+                margin='normal'
+                autoComplete="given-name"
+                name="firstName"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+                />
+              </Grid>
+              <Grid item xs
+              sx={{ml:1}}>
+              <TextField
+              margin='normal'
+              required
+              fullWidth
+              id="lastName"
+              label="Last Name"
+              name="lastName"
+              autoComplete="family-name"
+              />
+              </Grid>
+            </Grid>
+            <TextField
+            margin='normal'
+            required
+            fullWidth
+            id='email'
+            label='Email Address'
+            name='email'
+            autoComplete='email'
+            autoFocus
             />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+             <TextField
+            margin='normal'
+            required
+            fullWidth
+            id='password'
+            label='Password'
+            name='password'
+            autoComplete='Current-Password'
+            />
+            <FormControlLabel 
+            control={<Checkbox value="allowExtraEmails" color="primary" />}
+            sx={{color:"gray"}}
+            label="I want to receive inspiration, marketing promotions and updates via email."
+            />
+            <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            sx={{ mt:3, mb:2 ,fontWeight: "bold"}}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs
+              sx={{ml:22.7 , fontWeight: "bold"}}>
+                <Link href="#" variant="body2">
+                  {"Already have an account? Sign In"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
+   </ThemeProvider>
   )
 }
+
+
+//3. Export Area 
+export default Home;
